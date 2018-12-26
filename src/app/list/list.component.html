@@ -3,7 +3,12 @@
         [checked]="todoStore.allCompleted()"
         (click)="todoStore.setAllTo(toggleall.checked)">
 <div *ngIf="todoStore.todos.length > 0">
-    <ul class="todo-list" >
+    <ul class="todo-list"
+        ceddl-observe="todoList"
+        [attr.data-items-total]="todoStore.getCompleted().length + todoStore.getRemaining().length"
+        [attr.data-items-left]="todoStore.getRemaining().length"
+        [attr.data-active-filter]="activeFilter">
+
         <todo *ngFor="let todo of todos" [todo]='todo'></todo>
     </ul>
 </div>

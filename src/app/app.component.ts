@@ -1,4 +1,6 @@
+declare var ceddl:any;
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 /**
  * The main component
@@ -12,5 +14,12 @@ import { Component } from '@angular/core';
     ]
 })
 export class AppComponent {
+    constructor(router: Router) {
+        router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                ceddl.initialize();
+            }
+        });
 
+    }
 }

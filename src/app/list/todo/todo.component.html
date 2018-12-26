@@ -1,4 +1,8 @@
-<li [class.completed]="todo.completed" [class.editing]="todo.editing">
+<li [class.completed]="todo.completed" [class.editing]="todo.editing"
+    ceddl-observe="todoItem"
+    [attr.data-state]="todo.completed ? 'completed' : 'active'"
+    [attr.data-content]="todo.title"
+    [attr.data-content-length]="todo.title.length">
     <div class="view">
         <input class="toggle" type="checkbox" (click)="toggleCompletion(todo)" [checked]="todo.completed">
         <label (dblclick)="editTodo(todo)" donothing>{{todo.title | firstUpper}}</label>

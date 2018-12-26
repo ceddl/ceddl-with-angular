@@ -29,24 +29,31 @@ export class ListComponent {
      */
     todoStore: TodoStore;
     todos: Array<Todo>;
+    remaining: Array<Todo>;
+    completed: Array<Todo>;
+    activeFilter: String;
     watchTest;
 
     constructor(todoStore: TodoStore) {
         const that = this;
         this.todoStore = todoStore;
         this.todos = todoStore.getAll();
+        this.activeFilter = 'all';
         this.watchTest = Observable.of(todoStore.todos);
         EmitterService.get('FooterComponent').subscribe(value => {
             console.log(value);
             switch (value) {
                 case 'displayCompleted':
                     that.todos = todoStore.getCompleted();
+                    that.activeFilter = 'completed';
                     break;
                 case 'displayAll':
                     that.todos = todoStore.getAll();
+                    that.activeFilter = 'all';
                     break;
                 case 'displayRemaining':
                     that.todos = todoStore.getRemaining();
+                    that.activeFilter = 'active';
                     break;
             }
         });

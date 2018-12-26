@@ -1,5 +1,5 @@
 {
-    "name": "todomvc-angular",
+    "name": "ceddl-with-angular",
     "version": "0.0.0",
     "license": "MIT",
     "angular-cli": {},
@@ -21,6 +21,7 @@
         "@angular/platform-browser": "7.1.1",
         "@angular/platform-browser-dynamic": "7.1.1",
         "@angular/router": "7.1.1",
+        "@ceddl/ceddl-polyfill": "^0.9.3",
         "core-js": "2.5.4",
         "rxjs": "6.2.0",
         "rxjs-compat": "^6.3.3",

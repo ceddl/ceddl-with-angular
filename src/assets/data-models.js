@@ -1,27 +1,4 @@
-# ceddl with angular
-
-This is a Implementation example of ceddl-polyfill with angular. It demonstrates how you could use templating and ceddl data model to create a web frontend datalayer.
-
-Files that were changed to add a datalayer to the app:
-
-* angular.json
-* package.json
-* src/app/about/about.component.html
-* src/app/app.component.ts
-* src/app/footer/footer.component.ts
-* src/app/home/home.component.html
-* src/app/home/home.component.ts
-* src/app/list/list.component.html
-* src/app/list/list.component.ts
-* src/app/list/todo/todo.component.html
-* src/index.html
-* src/assets/data-models.js
-
-Data model that was implemented.
-[Screenshot-2](screenshots/model.png)
-
-```js
-(function () {
+ (function () {
 
     ceddl.modelFactory.create({
         key: 'page',
@@ -83,27 +60,30 @@ Data model that was implemented.
     // Initialize not here but part of the app router.
 
 }());
-```
 
-## Router code
-```js
-export class AppComponent {
-    constructor(router: Router) {
-        router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                ceddl.initialize();
-            }
-        });
+// Adding some code here to allow you to see data
+// changes in the datalayer by listening to events
+// on the eventbus
+(function () {
+    var jview = new JsonViewer(document.getElementById('json-container'));
+    var rendering = false;
+    function renderdataObject(){
+        if (!rendering) {
+            rendering = true;
+            setTimeout(function(){
+                var allData = ceddl.getModels();
+                allData.events = ceddl.getEvents();
+                jview.set(allData);
+                rendering = false;
+            }, 150);
+        }
     }
-}
-```
 
-## Demo server.
-Run `npm install` and `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    ceddl.eventbus.on('ceddl:models', function(data) {
+        renderdataObject();
+    });
 
-## Licence
-ceddl-with-angular is [MIT licensed]()
-
-## CEDDL-polyfill
-Customer experience digital data layer polyfill. Bridging the gap between the ceddl spec's and the browsers.
-For more information please visit [https://www.ceddlbyexample.com/](https://www.ceddlbyexample.com/)
+    ceddl.eventbus.on('ceddl:events', function(data) {
+        renderdataObject();
+    });
+}());

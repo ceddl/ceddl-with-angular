@@ -27,7 +27,11 @@
               "node_modules/todomvc-common/base.css",
               "node_modules/todomvc-app-css/index.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/json-viewer.js",
+              "node_modules/@ceddl/ceddl-polyfill/dist/index.min.js",
+              "src/assets/data-models.js"
+            ],
           },
           "configurations": {
             "production": {
