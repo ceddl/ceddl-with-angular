@@ -31,7 +31,7 @@ export class ListComponent {
     todos: Array<Todo>;
     remaining: Array<Todo>;
     completed: Array<Todo>;
-    activeFilter: String;
+    activeFilter: string;
     watchTest;
 
     constructor(todoStore: TodoStore) {

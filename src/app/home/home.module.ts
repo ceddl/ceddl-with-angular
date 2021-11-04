@@ -21,7 +21,6 @@ import { FooterModule } from '../footer/';
     imports: [
         BrowserModule,
         FormsModule,
-        
         HeaderModule.forRoot(),
         ListModule,
         FooterModule,

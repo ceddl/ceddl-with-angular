@@ -31,7 +31,7 @@
               "src/assets/json-viewer.js",
               "node_modules/@ceddl/ceddl-polyfill/dist/index.min.js",
               "src/assets/data-models.js"
-            ],
+            ]
           },
           "configurations": {
             "production": {

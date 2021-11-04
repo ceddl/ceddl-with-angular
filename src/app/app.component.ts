@@ -1,4 +1,4 @@
-declare var ceddl:any;
+declare const ceddl: any;
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 

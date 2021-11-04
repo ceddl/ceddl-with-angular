@@ -9,7 +9,7 @@ export class NoopGuard implements CanActivate {
     /**
      * Decide if a route can be activated
      */
-    canActivate (): boolean {
+    canActivate(): boolean {
         return true;
     }
 

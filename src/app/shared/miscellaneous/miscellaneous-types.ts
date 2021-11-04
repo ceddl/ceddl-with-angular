@@ -5,7 +5,7 @@ export type Name = string; // 136 - StringKeyword + rien
 /**
  * Some flags
  */
-export type Flags = {
+export interface Flags {
     option1: boolean;
     option2: boolean;
 }; // 163 - TypeLiteral + members
