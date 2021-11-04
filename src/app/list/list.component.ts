@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
 
 import { TodoStore } from '../shared/services/todo.store';
 
 import { EmitterService } from '../shared/services/emitter.service';
 
 import { Todo } from '../shared/models/todo.model';
+import { of } from 'rxjs';
 
 /**
  * The list of todos component
@@ -39,7 +39,7 @@ export class ListComponent {
         this.todoStore = todoStore;
         this.todos = todoStore.getAll();
         this.activeFilter = 'all';
-        this.watchTest = Observable.of(todoStore.todos);
+        this.watchTest = of(todoStore.todos);
         EmitterService.get('FooterComponent').subscribe(value => {
             console.log(value);
             switch (value) {

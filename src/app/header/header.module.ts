@@ -12,7 +12,7 @@ import { HeaderComponent } from './header.component';
     exports: [HeaderComponent]
 })
 export class HeaderModule {
-    public static forRoot(): ModuleWithProviders {
+    public static forRoot(): ModuleWithProviders<unknown> {
         return { ngModule: HeaderModule, providers: [] };
     }
 }
