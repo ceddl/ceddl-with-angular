@@ -30,9 +30,7 @@ export interface LabelledTodo {
  * }
  * ```
  */
-interface SearchFunc {
-    (source: string, subString: string): boolean;
-}
+type SearchFunc = (source: string, subString: string) => boolean;
 
 /**
  * A indexable interface just for documentation purpose

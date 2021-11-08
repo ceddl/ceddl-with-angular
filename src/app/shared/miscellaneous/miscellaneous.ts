@@ -8,7 +8,7 @@ export const PI = 3.14;
  * PIT let
  * See {@link Todo} for service using it
  */
-export let PIT = 4;
+export const PIT = 4;
 
 /**
  * A foo bar function
@@ -27,4 +27,4 @@ export interface InterfaceWithIndexable<T> {
     [yala: string]: T;
 }
 
-export let yo: { [index: string]: { message: string } } = {};
+export const yo: { [index: string]: { message: string } } = {};
