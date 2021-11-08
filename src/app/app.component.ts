@@ -1,4 +1,4 @@
-declare const ceddl: any;
+import { ceddl }  from '@ceddl/ceddl-polyfill';
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
