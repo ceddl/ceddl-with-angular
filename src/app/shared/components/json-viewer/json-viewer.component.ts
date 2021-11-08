@@ -24,7 +24,7 @@ export class JsonViewerComponent implements OnInit {
       this.renderdataObject();
     });
   }
-  
+  n;
   set(json) {
     this.updated = false;
     this.renderedHTMML = this.json2html([json]) + '</ul>';
@@ -40,7 +40,7 @@ export class JsonViewerComponent implements OnInit {
     if ( !this.rendering ) {
       this.rendering = true;
       setTimeout(() => {
-        var allData = ceddl.getModels();
+        const allData = ceddl.getModels();
         allData.events = ceddl.getEvents();
         this.set(allData);
         this.rendering = false;
@@ -49,14 +49,14 @@ export class JsonViewerComponent implements OnInit {
   }
 
   json2html(json) {
-    var html = '';
-    for (var key in json) {
+    let html = '';
+    for (const key in json) {
       if (!json.hasOwnProperty(key)) {
         continue;
       }
 
-      var value = json[key],
-          type = typeof json[key];
+      const value = json[key];
+          const type = typeof json[key];
 
       html = html + this.createJsonElement(key, value, type);
     }
@@ -64,9 +64,9 @@ export class JsonViewerComponent implements OnInit {
   }
 
   createJsonElement(key, value, type) {
-    var klass = 'jobject',
-        open = '{',
-        close = '}';
+    let klass = 'jobject';
+        let open = '{';
+        let close = '}';
 
     if (Array.isArray(value)) {
       klass = 'jarray';
@@ -80,7 +80,7 @@ export class JsonViewerComponent implements OnInit {
 
     switch(type){
       case 'object':
-        var object = '<li><span class="expanded"></span><span class="jkey">"' + key + '": </span> <span class="open">' + open + '</span> <ul class="' + klass + '">';
+        let object = '<li><span class="expanded"></span><span class="jkey">"' + key + '": </span> <span class="open">' + open + '</span> <ul class="' + klass + '">';
         object = object + this.json2html(value);
         return object + '</ul><span class="close">' + close + '</span></li>';
       case 'number':
